@@ -1,0 +1,32 @@
+HTML
+
+FLask App
+
+AWS Setup w/ S3, Lambda and API
+
+Azure ML
+
+
+- TODO:
+
+views.py 
+* line 14 ---> Access azure workspace url, change API key, and rename variables to suit project.
+* line 23 ---> update API key variable
+* line 39 ---> Change column data/names.
+* line 62 ---> Update azure URL variable name.
+* line 76 ---> Edit title variable for project scope.
+* line 124 ---> May need to change how values are accessed.
+* line 139 ---> Edit output variable text.
+
+justResponse.py
+* line 7 ---> Need to edit data variable to match in view.py
+* line 23 ---> Update url, api_key.
+
+result.html
+* line 11 ---> Update photo, or remove (additional consideration for layout required)
+
+* Figure out how to put fighter's name back into website so that we can reference ML model.
+* Change font
+* Potentially create python script that allows user to input stats that references actual fighter. Cosine similiarity
+
+
