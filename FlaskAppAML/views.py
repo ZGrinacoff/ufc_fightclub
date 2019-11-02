@@ -11,16 +11,14 @@ from FlaskAppAML import app
 
 from FlaskAppAML.forms import SubmissionForm
 
-### TODO: Access azure workspace url, change API key, and rename variables to suit project.
-BRAIN_ML_KEY=os.environ.get('API_KEY', "3ykY3j9WZDYvS0Dvf5VoJ1kA0yVT5HVzT+foY4SzKvD6LJhHoysBjlEQWaOniNQCGqsjKrytONq1kdxEWo3Scg==")
-BRAIN_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/workspaces/91af20abfc58455182eaaa615d581c59/services/da7cdb9359a443f0abdef36d30ce8f1c/execute?api-version=2.0&details=true")
+UFC_ML_KEY=os.environ.get('API_KEY', "el+yPf1wCAlNJYMPUgeCsa59JpzFHq29z/bsmExPJ/SIJ+qkdR3i+qnZF2gDnKIAcYTC/kRy/I8YEIzf8VP+5Q==")
+UFC_URL = os.environ.get('URL', "https://ussouthcentral.services.azureml.net/workspaces/4a71219c29084463a3cc6a1f420b86e7/services/3161dc4890504d8d898afff2e6cd335b/execute?api-version=2.0&details=true")
 # Deployment environment variables defined on Azure (pull in with os.environ)
 
 # Construct the HTTP request header
 # HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ API_KEY)}
 
-### TODO: change variable
-HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ BRAIN_ML_KEY)}
+HEADERS = {'Content-Type':'application/json', 'Authorization':('Bearer '+ UFC_ML_KEY)}
 
 # Our main app page/route
 @app.route('/', methods=['GET', 'POST'])
@@ -36,22 +34,18 @@ def home():
         # Plug in the data into a dictionary object 
         #  - data from the input form
         #  - text data must be converted to lowercase
-        ### TODO: Change column data/names.
+        # form.title.data.lower() ---> Use for input form.
         data =  {
-              "Inputs": {
-                "input1": {
-                  "ColumnNames": ["gender", "age", "size", "weight"],
-                  "Values": [ [
-                      0,
-                      1,
-                      form.title.data.lower(),
-                      0
 
-                    ]
-                  ]
-                }
-              },
-              "GlobalParameters": {}
+                "Inputs": {
+
+                        "input1":
+                        {
+                            "ColumnNames": ["Winner", "B_Height_cms", "B_Reach_cms", "B_Weight_lbs", "R_Height_cms", "R_Reach_cms", "R_Weight_lbs", "B_age", "R_age"],
+                            "Values": [ [ "value", "0", "0", "0", "0", "0", "0", "0", "0" ] ]
+                        },        },
+                    "GlobalParameters": {
+        }
             }
 
         # Serialize the input data into json string
@@ -59,14 +53,13 @@ def home():
 
         # Formulate the request
         #req = urllib.request.Request(URL, body, HEADERS)
-        ### TODO: Update azure URL variable name.
-        req = urllib.request.Request(BRAIN_URL, body, HEADERS)
-
+        req = urllib.request.Request(UFC_URL, body, HEADERS)
+        # print(UFC_URL + body + HEADERS)
         # Send this request to the AML service and render the results on page
         try:
             # response = requests.post(URL, headers=HEADERS, data=body)
             response = urllib.request.urlopen(req)
-            #print(response)
+            print(response)
             respdata = response.read()
             result = json.loads(str(respdata, 'utf-8'))
             result = do_something_pretty(result)
@@ -74,12 +67,12 @@ def home():
             return render_template(
                 'result.html',
                 ### TODO: Edit title variable for project scope.
-                title="This is the result from AzureML running our example Student Brain Weight Prediction:",
+                title="This is the result from AzureML running our UFC Fight Predictor:",
                 result=result)
 
         # An HTTP error
         except urllib.error.HTTPError as err:
-            result="The request failed with status code: " + str(err.code)
+            result="The request failed with status code: " + str(err.reason)
             return render_template(
                 'result.html',
                 title='There was an error',
