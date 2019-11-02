@@ -10,23 +10,14 @@ Azure ML
 - TODO:
 
 views.py 
-* line 14 ---> Access azure workspace url, change API key, and rename variables to suit project.
-* line 23 ---> update API key variable
-* line 39 ---> Change column data/names.
-* line 62 ---> Update azure URL variable name.
-* line 76 ---> Edit title variable for project scope.
-* line 124 ---> May need to change how values are accessed.
-* line 139 ---> Edit output variable text.
-
-justResponse.py
-* line 7 ---> Need to edit data variable to match in view.py
-* line 23 ---> Update url, api_key.
+line 133 ---> Change output to not just include who won, but maybe also stats for fighters and prediction accuracy.
 
 result.html
 * line 11 ---> Update photo, or remove (additional consideration for layout required)
 
-* Figure out how to put fighter's name back into website so that we can reference ML model.
-* Change font
+**** Change font
+**** Get fighter name (red/blue_text) into result.html page.
 * Potentially create python script that allows user to input stats that references actual fighter. Cosine similiarity
+* Figure out how to put fighter's name back into website so that we can reference ML model.
 
 
