@@ -42,7 +42,7 @@ def home():
                         "input1":
                         {
                             "ColumnNames": ["Winner", "B_Height_cms", "B_Reach_cms", "B_Weight_lbs", "R_Height_cms", "R_Reach_cms", "R_Weight_lbs", "B_age", "R_age"],
-                            "Values": [ [ "value", "0", "0", "0", "0", "0", "0", "0", "0" ] ]
+                            "Values": [ [ "value", form.blue_height.data.lower(), form.blue_reach.data.lower(), form.blue_weight.data.lower(), form.red_height.data.lower(), form.red_reach.data.lower(), form.red_weight.data.lower(), form.blue_age.data.lower(), form.red_age.data.lower() ] ]
                         },        },
                     "GlobalParameters": {
         }
@@ -114,7 +114,6 @@ def do_something_pretty(jsondata):
 
     # We only want the first array from the array of arrays under "Value" 
     # - it's cluster assignment and distances from all centroid centers from k-means model
-    ### TODO: May need to change how values are accessed.
     value = jsondata["Results"]["output1"]["value"]["Values"][0]
     #valuelen = len(value)
     print(value)
@@ -130,7 +129,7 @@ def do_something_pretty(jsondata):
     #repstr = '<tr><td>%d</td><td>%s</td></tr>' * (valuelen-1)
     # print(repstr)
     ### TODO: Edit output variable text.
-    output='For a brain with the size of : '+value[2]+ "<br/>Our Algorithm would calculate the weight to be: "+ value[4]
+    output='The winner of the fight was: '+value[9]
     # Build the entire html table for the results data representation
     #tablestr = 'Cluster assignment: %s<br><br><table border="1"><tr><th>Cluster</th><th>Distance From Center</th></tr>'+ repstr + "</table>"
     #return tablestr % data
