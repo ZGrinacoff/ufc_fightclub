@@ -1,65 +1,66 @@
 ﻿{% extends "layout.html" %}
 
 {% block content %}
-<h2>Please make your heroes and let them fight!</h2>
+<h2>Please see below for average stats per weight class, make your heroes, and let them fight!</h2>
+<img src="/static/images/avg_fighter_stats_weightclass.png" />
 <form method=post>
     <dl>
         <p>
-            <h3>Blue Height</h3>
+            <h3 style="color:rgb(88, 88, 192);">Blue Height</h3>
             Enter the Blue Fighter's Height (cm) <br/><br/>
             {{form.blue_height}}
         </p>
 
         <p>
-            <h3>Blue Reach</h3>
+            <h3 style="color:rgb(88, 88, 192);">Blue Reach</h3>
             Enter the Blue Fighter's Reach (cm) <br/><br/>
             {{form.blue_reach}}
         </p>
 
         <p>
-            <h3>Blue Weight</h3>
+            <h3 style="color:rgb(88, 88, 192);">Blue Weight</h3>
             Enter the Blue Fighter's Weight (lbs) <br/><br/>
             {{form.blue_weight}}
         </p>
 
         <p>
-            <h3>Red Height</h3>
+            <h3 style="color:red;">Red Height</h3>
             Enter the Red Fighter's Height (cm) <br/><br/>
             {{form.red_height}}
         </p>
 
         <p>
-            <h3>Red Reach</h3>
+            <h3 style="color:red;">Red Reach</h3>
             Enter the Red Fighter's Reach (cm) <br/><br/>
             {{form.red_reach}}
         </p>
 
         <p>
-            <h3>Red Weight</h3>
+            <h3 style="color:red;">Red Weight</h3>
             Enter the Red Fighter's Weight (lbs) <br/><br/>
             {{form.red_weight}}
         </p>
 
         <p>
-            <h3>Blue Age</h3>
+            <h3 style="color:rgb(88, 88, 192);">Blue Age</h3>
             Enter the Blue Fighter's Age <br/><br/>
             {{form.blue_age}}
         </p>
 
         <p>
-            <h3>Red Age</h3>
+            <h3 style="color:red;">Red Age</h3>
             Enter the Red Fighter's Age <br/><br/>
             {{form.red_age}}
         </p>
 
         <p>
-            <h3>Name the Blue Fighter</h3> 
+            <h3 style="color:rgb(88, 88, 192);">Name the Blue Fighter</h3> 
           Please name the Blue Fighter.<br /><br />
             {{form.blue_text}}
         </p>
 
         <p>
-            <h3>Name the Red Fighter</h3> 
+            <h3 style="color:red;">Name the Red Fighter</h3> 
           Please name the Red Fighter.<br /><br />
             {{form.red_text}}
         </p>

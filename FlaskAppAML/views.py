@@ -63,10 +63,10 @@ def home():
             respdata = response.read()
             result = json.loads(str(respdata, 'utf-8'))
             result = do_something_pretty(result)
+            # bar = create_chart()
             # result = json.dumps(result, indent=4, sort_keys=True)
             return render_template(
                 'result.html',
-                ### TODO: Edit title variable for project scope.
                 title="This is the result from AzureML running our UFC Fight Predictor:",
                 result=result)
 
@@ -95,7 +95,7 @@ def contact():
         'contact.html',
         title='Contact',
         year=datetime.now().year,
-        message='Your contact page.'
+        message='UFC Fightclub contact page.'
     )
 
 @app.route('/about')
@@ -128,8 +128,22 @@ def do_something_pretty(jsondata):
     # Build a placeholder for the cluster#,distance values
     #repstr = '<tr><td>%d</td><td>%s</td></tr>' * (valuelen-1)
     # print(repstr)
-    ### TODO: Edit output variable text.
-    output='The winner of the fight was: '+value[9]
+    output='With a prediction accuracy of ' + value[10] + ' the winner of the fight was: '+value[9] + "."
+    # def create_plot():
+    import plotly.graph_objects as go
+    import plotly
+    fighter_stats=['Height', 'Reach', 'Weight']
+
+    fig = go.Figure(data=[
+        go.Bar(name='Blue Fighter', x=fighter_stats, y=[value[1], value[2], value[3]]),
+        go.Bar(name='Red Fighter', x=fighter_stats, y=[value[4], value[5], value[6]])
+    ])
+        # Change the bar mode
+    fig.update_layout(barmode='group', title='UFC Fighter Stats Bar')
+    fig.show()
+        # graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+
+        # return graphJSON
     # Build the entire html table for the results data representation
     #tablestr = 'Cluster assignment: %s<br><br><table border="1"><tr><th>Cluster</th><th>Distance From Center</th></tr>'+ repstr + "</table>"
     #return tablestr % data

@@ -6,9 +6,18 @@
 
 {{ result|safe }}
 
+<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+<div class="chart" id="bargraph">
+    <script>
+        var graphs = {{ plot|safe }};
+        Plotly.plot('bargraph',graphs,{});
+    </script>
+</div> -->
+
 <h3>Snapshot from AzureML interface</h3>
 This was implemented using Azure ML Studio.<br /><br />
 <!-- TODO: Update photo, or remove (additional consideration for layout required) -->
-<img src="/static/images/AzureML.png" />
+<img src="/static/images/AzureML_UFC.png" />
 
 {% endblock %}
